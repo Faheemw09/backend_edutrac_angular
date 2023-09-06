@@ -8,9 +8,9 @@ const { Asignmentrouter } = require("./Routes/assignment.routes")
 const { Announcementrouter } = require("./Routes/announcement.routes")
 const { studentRoutes } = require("./Routes/student.routes")
 const { auth } = require("./Middleware/Authmiddleware")
-
-const app=express()
 app.use(cors())
+const app=express()
+
 app.use(express.json())
 require("dotenv").config()
 // app.use(auth)
@@ -21,6 +21,9 @@ app.use("/students",studentRoutes)
 app.use("/course",Courserouter)
 app.use("/assignment",Asignmentrouter)
 app.use("/announcement",Announcementrouter)
+app.get("/",(req,res)=>{
+res.send("welcome to the api")
+})
 
 
 app.listen(5050,async()=>{
